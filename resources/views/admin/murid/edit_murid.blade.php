@@ -21,18 +21,18 @@
             {{-- <input type="text" class="form-control" name="wilayah" id="exampleFormControlInput1" value="{{ $murid->wilayah }}"> --}}
             <select class="form-control" name="wilayah" value="{{ $murid->wilayah }}" id="exampleFormControlInput">
             {{-- <option selected>Pilih Wilayah</option> --}}
-            <option value="pasuruan"{{ $murid->wilayah =="pasuruan" ? 'selected' : '' }}>Pasuruan</option>
-            <option value="malang"{{ $murid->wilayah =="malang" ? 'selected' : '' }}>Malang</option>
-            <option value="lumajang"{{ $murid->wilayah =="lumajang" ? 'selected' : '' }}>Lumajang</option>
+            <option value="Pasuruan"{{ $murid->wilayah =="Pasuruan" ? 'selected' : '' }}>Pasuruan</option>
+            <option value="Malang"{{ $murid->wilayah =="Malang" ? 'selected' : '' }}>Malang</option>
+            <option value="Lumajang"{{ $murid->wilayah =="Lumajang" ? 'selected' : '' }}>Lumajang</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Komisariat</label>
             <select class="form-control" name="komisariat" value="{{ $murid->komisariat }}" id="exampleFormControlInput">
             {{-- <option selected>Pilih Komisariat</option> --}}
-            <option value="kraton"{{ $murid->komisariat }}>Kraton</option>
-            <option value="kejayan"{{ $murid->komisariat }}>Kejayan</option>
-            <option value="gondang wetan"{{ $murid->komisariat }}>Gondang Wetan</option>
+            <option value="Kraton"{{ $murid->komisariat =="Kraton" ? 'selected' : '' }}>Kraton</option>
+            <option value="Kejayan"{{ $murid->komisariat =="Kejayan" ? 'selected' : '' }}>Kejayan</option>
+            <option value="Pandaan"{{ $murid->komisariat =="Pandaan" ? 'selected' : '' }}>Pandaan</option>
             </select>
         </div>
         <div class="mb-3">
@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="card-footer">
-        <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+        <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
     </div>
 </form>
 </div>

@@ -56,4 +56,10 @@ class MuridController extends Controller
         //render view with post
         return view('admin.murid.edit_murid', compact('murid'));
     }
+    public function update()
+    {
+        $murid = Murid::all();
+        return view('admin.murid.murid')->with('murid', $murid);
+    }
+    
 }

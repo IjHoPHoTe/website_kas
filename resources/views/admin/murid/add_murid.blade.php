@@ -31,7 +31,7 @@
             <option selected>Pilih Komisariat</option>
             <option value="Kraton">Kraton</option>
             <option value="Kejayan">Kejayan</option>
-            <option value="Gondang Wetan">Gondang Wetan</option>
+            <option value="Pandaan">Pandaan</option>
             </select>
         </div>
         <div class="mb-3">
