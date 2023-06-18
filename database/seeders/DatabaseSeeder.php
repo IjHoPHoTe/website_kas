@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Wilayah;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -20,6 +22,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'fahmi@gmail.com',
             'password' => bcrypt('password'),
             'remember_token' => Str::random(50),
+        ]);
+        Wilayah::create([
+            'nama_wilayah' => 'Surabaya',
         ]);
     }
 }

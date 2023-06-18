@@ -3,9 +3,9 @@
     {{-- @dd($murid); --}}
     <div class="card shadow mb-4">
         <div class="card-header py-3 ">
-            <h6 class=" font-weight-bold text-primary">Data Anggota</h6>
+            <h6 class=" font-weight-bold text-primary">Data Komisariat</h6>
             <div class="float-right">
-                <a href="/add_murid" class="btn btn-info btn-circle">
+                <a href="/add_komisariat" class="btn btn-info btn-circle">
                     <i class="fas fa-plus-circle"></i>
                 </a>
             </div>
@@ -15,30 +15,27 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID Anggota</th>
+                            <th>No</th>
                             <th>Nama</th>
-                            <th>Wilayah</th>
-                            <th>Komisariat</th>
-                            <th>Alamat</th>
+                            <th>Jumlah Anggota</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($murid as $m)
+                        @foreach ($komisariat as $no => $k)
                             <tr>
-                                <td>{{ $m->id_anggota }}</td>
-                                <td>{{ $m->nama }}</td>
-                                <td>{{ $m->wilayah->nama_wilayah }}</td>
-                                <td>{{ $m->komisariat->nama_komisariat }}</td>
-                                <td>{{ $m->alamat }}</td>
+                                <th scope="row">{{ ++$no }}</th>
+                                <td>{{ $k->nama_komisariat }}</td>
                                 <td>
-
+                                    {{ $murid->where('id_komisariat', $k->id)->count() }}
+                                </td>
+                                <td>
                                     {{-- icon detail --}}
-                                    <a href="{{ route('edit.murid', $m->id) }}">
-                                        <i class="nav-icon fas fa-edit"></i>
+                                    <a href="{{ route('edit.komisariat', $k->id) }}">
+                                        <i class="nav-icon fas fa-edit" style="color: green"></i>
                                     </a>
                                     |
-                                    <a href="{{ url('delete', $m->id) }}">
+                                    <a href="{{ route('hapus.kom', $k->id) }}">
                                         <i class="nav-icon fas fa-trash" style="color: red"></i>
                                     </a>
                                 </td>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Komisariat;
 use App\Models\Murid;
+use App\Models\Wilayah;
 use Illuminate\Http\Request;
 
 class MuridController extends Controller
@@ -22,8 +24,12 @@ class MuridController extends Controller
 
     public function create()
     {
-        $murid = Murid::all();
-        return view('admin.murid.add_murid')->with('murid', $murid);
+        $data = [
+            'murid' => Murid::all(),
+            'wilayah' => Wilayah::all(),
+            'komisariat' => Komisariat::all()
+        ];
+        return view('admin.murid.add_murid', $data);
     }
 
     public function store(Request $request)
@@ -31,18 +37,20 @@ class MuridController extends Controller
         // validate form
         $this->validate($request, [
             'id_anggota'     => 'required',
+            'id_wilayah'     => 'required',
+            'id_komisariat'     => 'required',
             'nama'     => 'required',
-            'wilayah'     => 'required',
-            'komisariat'     => 'required',
+            'jenis_kelamin'     => 'required',
             'alamat'     => 'required'
         ]);
         $murid = Murid::all();
         Murid::create([
-            'id_anggota'=> $request->id_anggota,
-            'nama'=> $request->nama,
-            'wilayah'=> $request->wilayah,
-            'komisariat'=> $request->komisariat,
-            'alamat'=> $request->alamat,
+            'id_anggota'     => $request->id_anggota,
+            'id_wilayah'     => $request->id_wilayah,
+            'id_komisariat'     => $request->id_komisariat,
+            'nama'     => $request->nama,
+            'jenis_kelamin'     => $request->jenis_kelamin,
+            'alamat'     => $request->alamat
         ]);
 // dd($request);
         // redirect to index
@@ -51,9 +59,41 @@ class MuridController extends Controller
     public function edit(string $id)
     {
         //get post by ID
-        $murid = Murid::findOrFail($id);
+        $data = [
+            'murid' => Murid::find($id),
+            'wilayah' => Wilayah::all(),
+            'komisariat' => Komisariat::all()
+        ];
 
         //render view with post
-        return view('admin.murid.edit_murid', compact('murid'));
+        return view('admin.murid.edit_murid', $data);
+    }
+    public function update(Request $request,$id)
+    {
+        $murid = Murid::find($id);
+        $this->validate($request, [
+            'id_anggota'     => 'required',
+            'id_wilayah'     => 'required',
+            'id_komisariat'     => 'required',
+            'nama'     => 'required',
+            'jenis_kelamin'     => 'required',
+            'alamat'     => 'required'
+        ]);
+        $murid->nama = $request->input('nama');
+        $murid->id_anggota = $request->input('id_anggota');
+        $murid->id_wilayah = $request->input('id_wilayah');
+        $murid->id_komisariat = $request->input('id_komisariat');
+        $murid->jenis_kelamin = $request->input('jenis_kelamin');
+        $murid->alamat = $request->input('alamat');
+        $murid->update();
+
+        return redirect('/murid');
+    }
+    public function hapus($id)
+    {
+        $murid = Murid::find($id);
+        $murid->delete();
+
+        return redirect('/murid');
     }
 }
