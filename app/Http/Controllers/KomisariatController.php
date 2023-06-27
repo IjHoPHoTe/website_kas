@@ -102,8 +102,10 @@ class KomisariatController extends Controller
     public function hapus(Komisariat $komisariat,$id)
     {
         $komisariat = Komisariat::find($id);
+        // $total = $komisariat->total;
         $komisariat->delete();
 
+        // if($total ==='komisariat'){
         return redirect('/komisariat');
     }
 }

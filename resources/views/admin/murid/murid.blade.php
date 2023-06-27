@@ -47,6 +47,9 @@
                     </tbody>
                 </table>
             </div>
+            </div>
+            {{-- <div class="card-footer">
+                {{$murid->links() }} --}}
         </div>
     </div>
 @endsection

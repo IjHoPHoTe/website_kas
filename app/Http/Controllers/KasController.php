@@ -15,7 +15,8 @@ class KasController extends Controller
         //
     }
 
-    public function kasMasuk() {
+    public function kasMasuk()
+    {
         $kasMasuk = Kas::where('jenis', 'masuk')->get();
     
         
@@ -27,6 +28,13 @@ class KasController extends Controller
 
     return view('admin.kas.kas_keluar', compact('kasKeluar'));
 }
+public function semuaKas()
+{
+    $semuakas = Kas::all();
+
+    return view('admin.kas.semua_kas', compact('semuakas'));
+}
+
     /**
      * Show the form for creating a new resource.
      */
@@ -61,6 +69,11 @@ class KasController extends Controller
     /**
      * Display the specified resource.
      */
+    public function laporan(Kas $kas)
+    {
+        //
+    }
+
     public function show(Kas $kas)
     {
         //
@@ -85,8 +98,16 @@ class KasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kas $kas)
+    public function hapus($id)
     {
-        //
+        $kas = Kas::find($id);
+        $jenis = $kas->jenis;
+        $kas->delete();
+
+        if($jenis ==='masuk'){
+            return redirect()->route('kas.masuk');
+        } else{
+            return redirect()->route('kas.keluar');
+        }
     }
 }

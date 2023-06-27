@@ -3,7 +3,7 @@
     {{-- @dd($murid); --}}
     <div class="card shadow mb-4">
         <div class="card-header py-3 ">
-            <h6 class=" font-weight-bold text-primary">Data Kas Masuk</h6>
+            <h6 class=" font-weight-bold text-primary">Data Kas Keluar</h6>
             <div class="float-right">
                 <a href="/add_kas" class="btn btn-info btn-circle">
                     <i class="fas fa-plus-circle"></i>

@@ -16,6 +16,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            {{-- <th>ID Wilayah</th> --}}
                             <th>Nama</th>
                             <th>Jumlah Komisariat</th>
                             <th>Aksi</th>
@@ -25,6 +26,7 @@
                         @foreach ($wilayah as $no => $w)
                             <tr>
                                 <th scope="row">{{ ++$no }}</th>
+                                {{-- <td>{{ $w->wilayah_id }}</td> --}}
                                 <td>{{ $w->nama_wilayah }}</td>
                                 <td>
                                     {{ $komisariat->where('id_wilayah', $w->id)->count() }}

@@ -23,8 +23,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'remember_token' => Str::random(50),
         ]);
-        Wilayah::create([
-            'nama_wilayah' => 'Surabaya',
-        ]);
+        
     }
 }

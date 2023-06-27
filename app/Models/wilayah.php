@@ -11,7 +11,7 @@ class Wilayah extends Model
 
     protected $table = 'wilayah';
     protected $fillable = [
-        'nama_wilayah'
+        'nama_wilayah',
     ];
 
     public function murid()

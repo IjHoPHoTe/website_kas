@@ -3,9 +3,11 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KasController;
 use App\Http\Controllers\KomisariatController;
+use App\Http\Controllers\LaporanKasController;
 use App\Http\Controllers\MuridController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -54,8 +56,17 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('/delete_kom/{id}', [KomisariatController::class, 'hapus'])->name('hapus.kom');
 
     Route::get('/kas_masuk', [KasController::class, 'kasMasuk'])->name('kas.masuk');
+    Route::get('/semua_kas', [KasController::class, 'semuaKas'])->name('semua.kas');
     Route::get('/kas_keluar', [KasController::class, 'kasKeluar'])->name('kas.keluar');
     Route::get('/add_kas', [KasController::class, 'create']);
     Route::post('/post_kas', [KasController::class, 'store'])->name('kas.store');
+    Route::get('/delete_kas/{id}', [KasController::class, 'hapus'])->name('hapus.kas');
+
+    Route::get('/laporan_kas', [LaporanKasController::class, 'index']);
+
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/create-user', [UserController::class, 'create'])->name('user');
+    Route::post('/store-user', [UserController::class, 'store'])->name('user-store');
+
 
 });

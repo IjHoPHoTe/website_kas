@@ -29,6 +29,13 @@
                                 <td>{{ $kas->keterangan }}</td>
                                 <td>{{ $kas->jumlah }}</td>
                                 <td>{{ $kas->created_at }}</td>
+                                <td>
+
+                                    {{-- icon detail --}}
+                                    <a href="{{ url('delete_kas', $kas->id) }}">
+                                        <i class="nav-icon fas fa-trash" style="color: red"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

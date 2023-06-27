@@ -44,7 +44,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
 
@@ -57,13 +57,13 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="/wilayah">
-                    <i class="fas fa-fw fa-users"></i>
+                    <i class="fas fa-map-marked-alt"></i>
                     <span>Wilayah</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="/komisariat">
-                    <i class="fas fa-fw fa-users"></i>
+                    <i class="fas fa-map-marker-alt"></i>
                     <span>Komisariat</span></a>
             </li>
 
@@ -75,10 +75,23 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/semua_kas">Semua Kas</a>
                         <a class="collapse-item" href="/kas_masuk">Kas Masuk</a>
                         <a class="collapse-item" href="/kas_keluar">Kas Keluar</a>
                     </div>
                 </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/laporan_kas">
+                    <i class="fas fa-clipboard"></i>
+                    <span>Laporan</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/user">
+                    <i class="fas fa-clipboard"></i>
+                    <span>Data User</span></a>
             </li>
 
         </ul>

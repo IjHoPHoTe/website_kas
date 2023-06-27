@@ -18,7 +18,7 @@ class MuridController extends Controller
         // $data = [
         //     $murid = Murid::all()
         // ];
-        $murid = Murid::all();
+        $murid = Murid::All();
         return view('admin.murid.murid')->with('murid', $murid);
     }
 
