@@ -68,32 +68,10 @@ class MuridController extends Controller
         //render view with post
         return view('admin.murid.edit_murid', $data);
     }
-    public function update(Request $request,$id)
+    public function update()
     {
-        $murid = Murid::find($id);
-        $this->validate($request, [
-            'id_anggota'     => 'required',
-            'id_wilayah'     => 'required',
-            'id_komisariat'     => 'required',
-            'nama'     => 'required',
-            'jenis_kelamin'     => 'required',
-            'alamat'     => 'required'
-        ]);
-        $murid->nama = $request->input('nama');
-        $murid->id_anggota = $request->input('id_anggota');
-        $murid->id_wilayah = $request->input('id_wilayah');
-        $murid->id_komisariat = $request->input('id_komisariat');
-        $murid->jenis_kelamin = $request->input('jenis_kelamin');
-        $murid->alamat = $request->input('alamat');
-        $murid->update();
-
-        return redirect('/murid');
+        $murid = Murid::all();
+        return view('admin.murid.murid')->with('murid', $murid);
     }
-    public function hapus($id)
-    {
-        $murid = Murid::find($id);
-        $murid->delete();
-
-        return redirect('/murid');
-    }
+    
 }
