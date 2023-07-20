@@ -58,26 +58,22 @@ class KasController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = validator::make($request->all(), [
-            'jenis'     => 'required|in:masuk,keluar',
-            'keterangan'     => 'required',
-            'jumlah'     => 'required',
+        // Validasi input
+        $request->validate([
+            'jenis' => 'required|in:masuk,keluar',
+            'jumlah' => 'required|numeric|min:0',
+            'keterangan' => 'required|string',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-        $kas = Kas::create([
-            'jenis'=> $request->jenis,
-            'jumlah'=> $request->jumlah,
-            'keterangan'=> $request->keterangan,
-        ]);
-        
-        if ($kas->jenis === 'masuk') {
-            return response()->json(['message' => 'Data kas masuk berhasil disimpan.'], 201);
-        } else {
-            return response()->json(['message' => 'Data kas masuk berhasil disimpan.'], 201);
-        }
+        // Simpan data ke dalam database
+        $kas = new Kas();
+        $kas->jenis = $request->jenis;
+        $kas->jumlah = $request->jumlah;
+        $kas->keterangan = $request->keterangan;
+        $kas->save();
+
+        // Jika berhasil, kirimkan respons dengan status 201 (Created)
+        return response()->json(['message' => 'Data kas berhasil disimpan'], 201);
     }
 
     /**
