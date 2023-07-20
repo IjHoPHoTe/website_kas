@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class KasController extends Controller
 {
@@ -57,11 +58,15 @@ class KasController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $validator = validator::make($request->all(), [
             'jenis'     => 'required|in:masuk,keluar',
             'keterangan'     => 'required',
             'jumlah'     => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
         $kas = Kas::create([
             'jenis'=> $request->jenis,
             'jumlah'=> $request->jumlah,
@@ -69,15 +74,10 @@ class KasController extends Controller
         ]);
         
         if ($kas->jenis === 'masuk') {
-            return redirect()->route('kas.masuk');
+            return response()->json(['message' => 'Data kas masuk berhasil disimpan.'], 201);
         } else {
-            return redirect()->route('kas.keluar');
+            return response()->json(['message' => 'Data kas masuk berhasil disimpan.'], 201);
         }
-        return response()->json([
-            'success' => true,
-            'data' => $kas,
-            'message' => 'Sukses simpan'
-        ]);
     }
 
     /**
@@ -85,7 +85,13 @@ class KasController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $kas = Kas::find($id);
+
+        if (!$kas) {
+            return response()->json(['message' => 'Data kas tidak ditemukan.'], 404);
+        }
+
+        return response()->json(['data' => $kas], 200);
     }
 
     /**
@@ -93,8 +99,9 @@ class KasController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
+
 
     /**
      * Update the specified resource in storage.

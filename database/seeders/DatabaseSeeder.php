@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Fahmi Aziz',
             'email' => 'fahmi@gmail.com',
             'password' => bcrypt('password'),
+            'role' => 'admin',
             'remember_token' => Str::random(50),
         ]);
         

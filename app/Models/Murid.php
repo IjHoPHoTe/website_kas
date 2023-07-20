@@ -16,7 +16,9 @@ class Murid extends Model
         'id_komisariat',
         'nama',
         'jenis_kelamin',
-        'alamat'
+        'alamat',
+        'email',
+        'tanggal_lahir'
     ];
 
     public function wilayah()

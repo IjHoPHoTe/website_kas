@@ -17,33 +17,40 @@
                         <tr>
                             <th>ID Anggota</th>
                             <th>Nama</th>
+                            <th>Tanggal Lahir</th>
                             <th>Wilayah</th>
                             <th>Komisariat</th>
                             <th>Alamat</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($murid as $m)
-                            <tr>
-                                <td>{{ $m->id_anggota }}</td>
-                                <td>{{ $m->nama }}</td>
-                                <td>{{ $m->wilayah->nama_wilayah }}</td>
-                                <td>{{ $m->komisariat->nama_komisariat }}</td>
-                                <td>{{ $m->alamat }}</td>
-                                <td>
+                    @if ($murid && $murid->count() > 0)
+                    @foreach ($murid as $m)
+                        <tr>
+                            <td>{{ $m->id_anggota }}</td>
+                            <td>{{ $m->nama }}</td>
+                            <td>{{ $m->tanggal_lahir }}</td>
+                            <td>{{ $m->wilayah->nama_wilayah }}</td>
+                            <td>{{ $m->komisariat->nama_komisariat }}</td>
+                            <td>{{ $m->alamat }}</td>
+                            <td>
 
-                                    {{-- icon detail --}}
-                                    <a href="{{ route('edit.murid', $m->id) }}">
-                                        <i class="nav-icon fas fa-edit"></i>
-                                    </a>
-                                    |
-                                    <a href="{{ url('delete', $m->id) }}">
-                                        <i class="nav-icon fas fa-trash" style="color: red"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
+                                {{-- icon detail --}}
+                                <a href="{{ route('edit.murid', $m->id) }}">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                </a>
+                                |
+                                <a href="{{ url('delete', $m->id) }}">
+                                    <i class="nav-icon fas fa-trash" style="color: red"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="6">No data found.</td>
+                    </tr>
+                @endif
                     </tbody>
                 </table>
             </div>

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('murids', function (Blueprint $table) {
             $table->id();
+            $table->string('email')->unique();
+            $table->string('tanggal_lahir');
             $table->integer('id_anggota');
             $table->integer('id_wilayah');
             $table->integer('id_komisariat');
