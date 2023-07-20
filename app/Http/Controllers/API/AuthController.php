@@ -3,17 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
 
 class AuthController extends Controller
 {
-    /**
-     * Register a new user.
-     */
     public function register(Request $request)
     {
         $request->validate([
@@ -25,19 +22,14 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
         ]);
 
-        $user->save();
-
         return response()->json([
-            'message' => 'Registration Successful',
-        ], 201);
+            'message' => 'Registration Success'
+        ], 200);
     }
 
-    /**
-     * Log in an existing user.
-     */
     public function login(Request $request)
     {
         $request->validate([
@@ -45,28 +37,19 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (!Auth::attempt($request->only('email', 'password'))) {
+        if (!Auth::attempt($request->only('email','password'))){
             throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+                'email' => ['Email tidak ditemukan'],
             ]);
         }
 
-        $user = $request->user();
+        $user = User::where('email', $request->email)->first();
 
         return response()->json([
-            'message' => 'Login Successful',
-            'access_token' => $user->createToken('auth_token')->plainTextToken,
-            'data' => $user,
-        ], 200);
-    }
-
-    /**
-     * Log out the authenticated user.
-     */
-    public function logout(Request $request)
-    {
-        $request->user()->tokens()->delete();
-
-        return response()->json(['message' => 'Logged out']);
+            'message' => 'Login Successfull',
+            'name' => $user->name,
+            'acess_token' => $user->createToken('auth_token')->plainTextToken,
+            'data' => Auth::user()
+        ],);
     }
 }
