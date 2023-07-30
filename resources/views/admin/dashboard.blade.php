@@ -91,10 +91,10 @@
  <!-- Color System -->
  <div class="row">
     <div class="col-md-4 mb-4">
-        <div class="card bg-primary text-white shadow">
+        <div class="card" style="background-color: orange; color: white;">
             <div class="card-body">
                 Anggota
-                <div class="text-white-50 small">#4e73df</div>
+                <div class="text-white-50 small"></div>
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@
         <div class="card bg-success text-white shadow">
             <div class="card-body">
                 Wilayah
-                <div class="text-white-50 small">#1cc88a</div>
+                <div class="text-white-50 small"></div>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@
         <div class="card bg-info text-white shadow">
             <div class="card-body">
                 Komisariat
-                <div class="text-white-50 small">#1cc88a</div>
+                <div class="text-white-50 small"></div>
             </div>
         </div>
     </div>

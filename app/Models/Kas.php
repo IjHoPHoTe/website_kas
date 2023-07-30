@@ -12,8 +12,9 @@ class Kas extends Model
     protected $table = 'kas';
 
     protected $fillable = [
-        'user_id',
+        // 'user_id',
         'keterangan',
         'jumlah',
+        'kegiatan',
         'jenis'];
 }

@@ -16,6 +16,15 @@
                     </select>
                 </div>
                 <div class="mb-3">
+                    <label for="kegiatan" class="form-label">Kegiatan</label>
+                    <select class="form-control" name="kegiatan">
+                        <option value="">Pilih Kegiatan</option>
+                        <option value="nks">NKS</option>
+                        <option value="ksb">KSB</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Jumlah</label>
                     <input type="number" class="form-control" name="jumlah" id="exampleFormControlInput1"
                         placeholder="Masukkan Nominal">

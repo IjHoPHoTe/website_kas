@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('jumlah');
             $table->enum('jenis', ['masuk', 'keluar']);
+            $table->enum('kegiatan', ['nks', 'ksb', 'lainnya']);
             $table->string('keterangan');
             $table->timestamps();
         });

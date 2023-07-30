@@ -16,9 +16,10 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Tanggal</th>
+                            <th>Kegiatan</th>
                             <th>Keterangan</th>
                             <th>Jumlah</th>
-                            <th>Tanggal</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -26,9 +27,10 @@
                         @foreach ($kasKeluar as $kas)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $kas->created_at }}</td>
+                                <td>{{ $kas->kegiatan }}</td>
                                 <td>{{ $kas->keterangan }}</td>
                                 <td>{{ $kas->jumlah }}</td>
-                                <td>{{ $kas->created_at }}</td>
                                 <td>
 
                                     {{-- icon detail --}}

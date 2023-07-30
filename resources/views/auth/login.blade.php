@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>DKH IASS - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('templateAdmin')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-success">
 
     <div class="container">
 
@@ -38,12 +38,12 @@
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        <div class="row">
+                        <div class="row justify-content-center"> <!-- Tambahkan kelas "justify-content-center" di sini -->
                             {{-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> --}}
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Login DKH IASS</h1>
                                     </div>
                                     <form class="user" action="/postlogin" method="POST">
                                         {{csrf_field()}}
@@ -63,7 +63,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">LOGIN</button>
+                                        <button type="submit" class="btn btn-success btn-user btn-block">LOGIN</button>
                                         <hr>
                                     </form>
                                     <hr>
@@ -78,6 +78,7 @@
                         </div>
                     </div>
                 </div>
+                
 
             </div>
 

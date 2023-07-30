@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kas;
 use Illuminate\Http\Request;
 
+
 class KasController extends Controller
 {
     /**
@@ -50,15 +51,17 @@ public function semuaKas()
     {
         $this->validate($request, [
             'jenis'     => 'required|in:masuk,keluar',
+            'kegiatan'     => 'required|in:nks,ksb,lainnya',
             'keterangan'     => 'required',
             'jumlah'     => 'required',
         ]);
         $kas = Kas::create([
             'jenis'=> $request->jenis,
+            'kegiatan'=> $request->kegiatan,
             'jumlah'=> $request->jumlah,
             'keterangan'=> $request->keterangan,
         ]);
-        
+        // dd($request->all());
         if ($kas->jenis === 'masuk') {
             return redirect()->route('kas.masuk');
         } else {

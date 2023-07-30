@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Komisariat;
 use App\Models\Murid;
+use App\Models\User;
 use App\Models\Wilayah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class WilayahController extends Controller
 {
@@ -35,10 +37,22 @@ class WilayahController extends Controller
         $wilayah = Wilayah::all();
         $this->validate($request, [
             'nama_wilayah'     => 'required',
+            'email'     => 'required|email',
         ]);
+
+        $user = new User();
+        $user->role = 'bendahara';
+        $user->name = $request->nama_wilayah;
+        $user->email = $request->email;
+        $user->password = bcrypt('password');
+        $user->remember_token = str::random(50);
+        $user->save();
+        
         Wilayah::create([
             'nama_wilayah'=> $request->nama_wilayah,
+            'email'=> $request->email,
         ]);
+        dd($request->all());
         return redirect('/wilayah');
     }
     public function edit($id)
